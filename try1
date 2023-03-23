@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Maps Heatmap Example</title>
+  <style>
+    #map {
+      height: 500px;
+    }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization"></script>
+  <script>
+    // 数据数组，包含经纬度和权重
+    var data = [
+      {location: new google.maps.LatLng(37.782551, -122.445368), weight: 0.5},
+      {location: new google.maps.LatLng(37.782745, -122.444586), weight: 2},
+      {location: new google.maps.LatLng(37.782842, -122.443688), weight: 3},
+      {location: new google.maps.LatLng(37.782919, -122.442815), weight: 1},
+      {location: new google.maps.LatLng(37.782992, -122.442112), weight: 0.5},
+      {location: new google.maps.LatLng(37.783100, -122.441461), weight: 2},
+      {location: new google.maps.LatLng(37.783206, -122.440829), weight: 3},
+      {location: new google.maps.LatLng(37.783273, -122.440324), weight: 1},
+      {location: new google.maps.LatLng(37.783316, -122.440023), weight: 0.5},
+      {location: new google.maps.LatLng(37.783357, -122.439794), weight: 2}
+    ];
+
+    // 创建地图并显示热力图
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {lat: 37.774546, lng: -122.433523},
+        mapTypeId: 'roadmap'
+      });
+
+      var heatmap = new google.maps.visualization.HeatmapLayer({
+        data: data,
+        radius: 20,
+        opacity: 0.8
+      });
+      heatmap.setMap(map);
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <div id="map"></div>
+</body>
+</html>
